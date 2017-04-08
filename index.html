@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Version 1.0 - 26.03.2016 -->
+<html lang="de">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="robots" content="noindex,nofollow">
+      <meta name="author" content="Juergen Niemeyer">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <title>Druckverlustberechnung</title>
+      <script src="normBuilder.js"></script>
+   </head>
+   <body>
+      <div id="slogan">
+         <img src="images/slogan.png" alt="slogan" width="270" height="45" style="float:left">
+         <a href="http://www.ritag.com"> <img src="images/logo.jpg" alt="logo" style="float:right"></a>
+      </div>
+      <nav>
+         <ul>
+            <li>
+               <h1>Gase im Normzustand</h1>
+            </li>
+            <li><a href="betrieb.html">Gase im Betriebszustand + Flüssigkeiten</a></li>
+         </ul>
+      </nav>
+      <form>
+         <h2> Eingabe der Betriebsdaten </h2>
+         <p>
+            <label for="MediumListe">Medium: </label>
+            <select name="MediumListe" id="MediumListe">
+               <option value="">Bitte wählen Sie ein Medium</option>
+            </select>
+            <br>
+            <script>
+               window.addEventListener("load",medium_liste,false);
+            </script>
+         </p>
+         <p>
+            <label for="Volumenstrom">Volumenstrom [Nm&sup3;/h]: </label>
+            <input type="number" step="any" id="Volumenstrom" name="Volumenstrom">
+         </p>
+         <p>
+            <label for="Betriebsdruck">Betriebsdruck [bar(a)]: </label>
+            <input type="number" step="any" id="Betriebsdruck" name="Betriebsdruck">
+         </p>
+         <p>
+            <label for="Betriebstemperatur">Betriebstemperatur [°C]: </label>
+            <input type="number" step="any" id="Betriebstemperatur" name="Betriebstemperatur">
+         </p>
+         <h2>Auswahl der Rückschlagarmatur</h2>
+         <p>
+            <label for="Type">Type: </label>
+            <select name="Type" id="Type">
+               <option value="">Bitte wählen Sie eine Type</option>
+            </select>
+         </p>
+         <br>
+         <script>
+            window.addEventListener("load",typen_liste,false);
+         </script>
+         <p>
+            <label for="Nennweite">Nennweite: </label>
+            <select name="Nennweite" id="Nennweite">
+               <option value="">Bitte wählen Sie eine Nennweite</option>
+            </select>
+         </p>
+         <br>
+         <script>
+            document.getElementById("Type").addEventListener("change",nennweite_liste,false);
+         </script>
+         <div id="ErgebnisVolumen"></div>
+         <div id="ErgebnisDruck"></div>
+      </form>
+      <p>
+      <button onclick="wasservolumen(); return false">Berechnen</button>
+      </p>
+   </body>
+</html>
